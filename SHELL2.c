@@ -133,7 +133,7 @@ int *io_redirect(char **process_args) {
 	static int fio[2] = {0, 1};
 	while (process_args[i] != NULL) {	
 		if (!strcmp(process_args[i], ">")) {	//FIXME same value recounting x999 times
-			if (process_args[i + 1] != NULL) {	//TODO PULL OUT IF COND
+			if (process_args[i + 1] != NULL) {	//TODO PULL OUT {IF COND}
 				fio[1] = open(process_args[i + 1], O_WRONLY | O_TRUNC | O_CREAT , 0666);
 				if (fio[1] < 0) {
 					fio[1] = 1;
