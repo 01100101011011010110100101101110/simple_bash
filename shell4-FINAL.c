@@ -72,7 +72,7 @@ char *get_word() {
 	return word;
 }	
 
-int spec_sym_process(char *word) {	//stage 3+
+int spec_sym_process(char *word) {
 	/*
 		0 - |
 		1 - &
@@ -81,7 +81,7 @@ int spec_sym_process(char *word) {	//stage 3+
 		4 - ;
 	*/
 	if (!strcmp(word, "|")) {
-		spec_sym_arr = realloc(spec_sym_arr, sizeof(int) * (2 + spec_sym_idx));	//FIXME
+		spec_sym_arr = realloc(spec_sym_arr, sizeof(int) * (2 + spec_sym_idx)); //FIXME
 		spec_sym_arr[spec_sym_idx] = 0;
 		return 1;
 	} else if (!strcmp(word, "&")) {
@@ -359,7 +359,6 @@ void check_process(int SIG) {
 
 void main_process(char ***data_arr) {
 	do {
-		//print_spec();
 		switch (spec_sym_arr[sym_idx]) {
 			case 1:			//ampersanad
 			case 0:			//pipe
@@ -400,45 +399,6 @@ void main_process(char ***data_arr) {
 	} while (spec_sym_arr[sym_idx] != -1);
 }
 
-//TEST START
-/*
-void print_pid() {
-	int i = 0;
-	while (pid_arr[i] != -1) {
-		printf("%d ", pid_arr[i]);
-		i++;
-	}
-	printf("%d ", pid_arr[i]);
-	printf("\n");
-}
-	
-
-void print_list(char ***data_arr) {
-	int i = 0;
-	while(data_arr[i] != NULL) {
-		int j = 0;
-		printf("PRINT LIST:\n");
-		while (data_arr[i][j] != NULL) {
-			printf("%s ", data_arr[i][j]);
-		}
-		printf("\n");
-		i++;
-	}
-
-}
-
-void print_spec() {
-	int i = 0;
-	printf("PRINT SPEC:\n");
-	while (spec_sym_arr[i] != -1) {
-		printf("%d ", spec_sym_arr[i]);
-		i++;
-	}
-	printf("%d ", spec_sym_arr[i]);
-	printf("\n");
-}
-*/
-//TEST END
 int main() {
 	char ***data_arr = NULL;
 	pid_arr = (int *) malloc(sizeof(int) * 2);
